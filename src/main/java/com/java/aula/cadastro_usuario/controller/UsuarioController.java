@@ -8,10 +8,12 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/usuario")
-@RequiredArgsConstructor
+
 public class UsuarioController {
 
     private final UsuarioService usuarioService;
+
+    public UsuarioController(UsuarioService usuarioService) {this.usuarioService = usuarioService;}
 
     @PostMapping
     public ResponseEntity<Void> salvarUsuario(@RequestBody Usuario usuario){

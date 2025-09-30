@@ -32,7 +32,7 @@ public class UsuarioService {
         Usuario usuarioAtualizado = Usuario.builder()
                 .email(usuario.getEmail() != null ? usuario.getEmail() :
                         usuarioAntigo.getEmail())
-                .email(usuario.getNome() != null ? usuario.getNome() :
+                .nome(usuario.getNome() != null ? usuario.getNome() :
                         usuarioAntigo.getNome())
                 .id(usuarioAntigo.getId())
                 .build();
