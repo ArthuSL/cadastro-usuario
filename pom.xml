@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.java.aula</groupId>
-	<artifactId>cadastro-usuario</artifactId>
+	<artifactId>cadastro-animal</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>cadastro-usuario</name>
-	<description>Projeto para cadastro usuario</description>
+	<name>cadastro-animal</name>
+	<description>Projeto para cadastro animal</description>
 	<url/>
 	<licenses>
 		<license/>

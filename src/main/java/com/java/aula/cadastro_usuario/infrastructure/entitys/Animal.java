@@ -8,18 +8,21 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "usuario")
+@Table(name = "animal")
 @Entity
 
-public class Usuario {
+public class Animal {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(name = "email", unique = true)
-    private String email;
-
-    @Column(name = "nome")
+    @Column(name = "nome", unique = true)
     private String nome;
+
+    @Column(name = "cor")
+    private String cor;
+
+    @Column(name = "especie")
+    private String especie;
 }
