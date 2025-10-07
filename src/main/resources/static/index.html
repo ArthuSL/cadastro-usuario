@@ -2,43 +2,181 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Cadastro de Animal</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Controle - Zoológico</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Lilita+One&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #4A6A52; /* Verde musgo, selva */
+            --secondary-color: #F5A623; /* Laranja safári, sol */
+            --background-color: #F4F1EA; /* Bege claro, areia */
+            --card-background: #FFFFFF;
+            --text-color: #3D3D3D; /* Cinza escuro, rochas */
+            --danger-color: #D0021B; /* Vermelho para alerta/deletar */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        header, footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        h1, h2 {
+            font-family: 'Lilita One', cursive;
+            letter-spacing: 1px;
+        }
+
+        .card {
+            background-color: var(--card-background);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .card h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-size: 1.8rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input[type="text"]:focus, input[type="number"]:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(245, 166, 35, 0.3);
+        }
+
+        button {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 0.9rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease, background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #d88e14; /* Laranja mais escuro */
+            transform: translateY(-2px); /* Efeito de levantar */
+        }
+
+        button.danger {
+            background-color: var(--danger-color);
+        }
+
+        button.danger:hover {
+            background-color: #a30115; /* Vermelho mais escuro */
+        }
+
+        #resultadoBuscar {
+            background-color: #f9f9f9;
+            border: 1px dashed #ccc;
+            padding: 1rem;
+            margin-top: 1.5rem;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            color: #555;
+            font-family: monospace; /* Fonte monoespaçada para código */
+        }
+    </style>
 </head>
 <body>
-<h1>Cadastro de Animal</h1>
 
-<!-- Criar animal -->
-<h2>Criar</h2>
-<input type="text" id="nome" placeholder="Nome">
-<input type="text" id="cor" placeholder="Cor">
-<input type="text" id="especie" placeholder="Especie">
-<button onclick="criar()">Salvar</button>
+<header>
+    <h1>🐾 Painel de Controle do Zoológico</h1>
+</header>
 
-<hr>
+<main class="container">
 
-<!-- Buscar animal -->
-<h2>Buscar</h2>
-<input type="text" id="buscarNome" placeholder="Nome">
-<button onclick="buscar()">Buscar</button>
-<pre id="resultadoBuscar"></pre>
+    <section class="card">
+        <h2>Cadastrar Novo Animal</h2>
+        <div class="form-group">
+            <input type="text" id="nome" placeholder="Nome do Animal (Ex: Simba)">
+            <input type="text" id="cor" placeholder="Cor (Ex: Amarelo)">
+            <input type="text" id="especie" placeholder="Espécie (Ex: Leão)">
+            <button onclick="criar()">Salvar</button>
+        </div>
+    </section>
 
-<hr>
+    <section class="card">
+        <h2>Buscar Animal por Nome</h2>
+        <div class="form-group">
+            <input type="text" id="buscarNome" placeholder="Digite o nome para buscar">
+            <button onclick="buscar()">Buscar</button>
+        </div>
+        <pre id="resultadoBuscar"></pre>
+    </section>
 
-<!-- Deletar animal -->
-<h2>Deletar</h2>
-<input type="text" id="deletarNome" placeholder="Nome">
-<button onclick="deletar()">Deletar</button>
+    <section class="card">
+        <h2>Deletar Animal</h2>
+        <div class="form-group">
+            <input type="text" id="deletarNome" placeholder="Digite o nome para deletar">
+            <button class="danger" onclick="deletar()">Deletar</button>
+        </div>
+    </section>
 
-<hr>
+    <section class="card">
+        <h2>Atualizar Dados do Animal</h2>
+        <div class="form-group">
+            <input type="number" id="id" placeholder="ID do animal para atualizar">
+            <input type="text" id="novoNome" placeholder="Novo Nome">
+            <input type="text" id="novoCor" placeholder="Nova Cor">
+            <input type="text" id="novoEspecie" placeholder="Nova Espécie">
+            <button onclick="atualizar()">Atualizar</button>
+        </div>
+    </section>
 
-<!-- Atualizar usuário -->
-<h2>Atualizar</h2>
-<input type="number" id="id" placeholder="ID">
-<input type="text" id="novoNome" placeholder="Novo Nome">
-<input type="text" id="novoCor" placeholder="Nova Cor">
-<input type="text" id="novoEspecie" placeholder="Nova Especie">
-<button onclick="atualizar()">Atualizar</button>
+</main>
+
+<footer>
+    <p>Zoológico Fantasia &copy; 2025</p>
+</footer>
 
 <script>
     const api = "/animal";
